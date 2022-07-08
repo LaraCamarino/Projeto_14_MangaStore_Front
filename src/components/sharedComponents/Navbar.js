@@ -16,8 +16,8 @@ export default function Logo() {
             </LeftSide>
 			    <BrandLogo onClick={()=>{navigate("/")}}>MangaStore</BrandLogo>
             <RightSide>
-                <ion-icon name="cart-outline" onClick={()=>{navigate("/cart") }}/>
                 <ion-icon name="search-outline" onClick={()=>{navigate("/search") }}/>
+                <ion-icon name="cart-outline" onClick={()=>{navigate("/cart") }}/>
             </RightSide>
 		</Container>
 	);
