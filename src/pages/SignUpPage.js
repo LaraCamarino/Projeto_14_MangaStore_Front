@@ -43,8 +43,30 @@ export default function SignUpPage() {
 	}
 
 	function signUp() {
-		console.log(user);
-		setLoading(true);
+		const URL = "https://project-14-manga-store.herokuapp.com/sign-up";
+
+        setLoading(true);
+        const promise = axios.post(URL, {
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            confirmPassword: user.confirmPassword
+        });
+        promise.then(res => {
+			console.log(user);
+            navigate("/sign-in");
+        });
+        promise.catch(err => {
+            alert(err.response.data);
+			console.log("deu ruim")
+            setUser({
+                name: "",
+                email: "",
+                password: "",
+                confirmPassword: ""
+            });
+            setLoading(false);
+        });
 	}
 
 
