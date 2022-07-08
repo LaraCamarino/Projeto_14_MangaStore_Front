@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Navbar from '../components/sharedComponents/Navbar'
+import MostPopular from '../components/homeComponents/MostPopular';
+import GenreSelector from '../components/homeComponents/GenreSelector'
 
 /*	<Promotions/>              
 	<Reviews/>     
-	<MostPopular/>  
-	<GenreSelector/>     
 	<Contact/>
 	
 	Just an ideia 
@@ -14,6 +14,8 @@ export default function HomePage() {
 	return (
 		<Page>
 			<Navbar />
+			<MostPopular/>  
+			<GenreSelector/>   
 		</Page>
 	);
 }
