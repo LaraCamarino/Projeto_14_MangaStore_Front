@@ -97,6 +97,7 @@ const Input = styled.input`
 		border-bottom-color: black;
 	}
 `
+
 const Button = styled.button`
 	width: 75%;
     background-color: #2F2F2F;

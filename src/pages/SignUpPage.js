@@ -53,12 +53,10 @@ export default function SignUpPage() {
             confirmPassword: user.confirmPassword
         });
         promise.then(res => {
-			console.log(user);
             navigate("/sign-in");
         });
         promise.catch(err => {
             alert(err.response.data);
-			console.log("deu ruim")
             setUser({
                 name: "",
                 email: "",
@@ -108,6 +106,7 @@ const Input = styled.input`
 		border-bottom-color: black;
 	}
 `
+
 const Button = styled.button`
 	width: 75%;
     background-color: #2F2F2F;
