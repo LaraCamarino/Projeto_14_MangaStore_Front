@@ -9,7 +9,7 @@ export default function Menu({isMenuHidden, setIsMenuHidden}) {
                 <DivTitle>
                     <MenuTitle>Genres:</MenuTitle>
                 </DivTitle>
-                <ShouenenLink to="/genre/Shouenen">Shounen</ShouenenLink>
+                <ShouenenLink to="/genre/Shounen">Shounen</ShouenenLink>
                 <Line></Line>
                 <IsekaiLink to="/genre/Isekai">Isekai</IsekaiLink>
                 <Line></Line>

@@ -10,9 +10,9 @@ export default function MostPopular() {
         </Title>
         <Container >
             
-            <Genre to="/genre/Shouenen">
+            <Genre to="/genre/Shounen">
                 <Banner src={"https://pbs.twimg.com/profile_images/1412076605795704834/xAAu3BzR_400x400.jpg"}></Banner>
-                <ShouenenLink to="/genre/Shouenen">Shounen</ShouenenLink>
+                <ShouenenLink to="/genre/Shounen">Shounen</ShouenenLink>
             </Genre>
             <Genre to="/genre/Isekai">
                 <Banner src={"https://64.media.tumblr.com/7483a1408af4dfc8110a50b8feab4407/13470987156174de-97/s1280x1920/b8538be416a6332c5e6108ae1633f07643ca9656.png"}></Banner>

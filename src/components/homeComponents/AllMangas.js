@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 import axios from "axios";
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { ThreeDots } from  'react-loader-spinner';
 
-import Navbar from "../components/sharedComponents/Navbar";
+export default function AllMangas() {
 
-export default function DepositPage() {
-
-	const {mangaGenre} = useParams();
     const [mangas, setMangas] = useState(null);
 
-
     useEffect(() => {
-        const URL = `https://project-14-manga-store.herokuapp.com/genreMangas/${mangaGenre}`;
+        const URL = "https://project-14-manga-store.herokuapp.com/allMangas";
         const promise = axios.get(URL);
         promise.then((res)=> {
+            console.log(res.data)
             setMangas(res.data);
         });
     }, [])
@@ -42,8 +38,9 @@ export default function DepositPage() {
 
 	return (
 		<Page>
-			<Navbar />
-
+            <Title>
+                <h3>See All Mangas</h3>  
+            </Title>
 			<Container>
             {callShowMangas}
 			</Container>
@@ -51,10 +48,22 @@ export default function DepositPage() {
 	);
 }
 
+const Title = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    h3{
+        font-size: 34px;
+        color: black;  
+    }
+`;
+
 const Page = styled.div`
 	min-height: 100vh;
 	width: 100%;
-	margin-top: 90px;
+	margin-top: 50px;
 `;
 
 const Container = styled.div`
