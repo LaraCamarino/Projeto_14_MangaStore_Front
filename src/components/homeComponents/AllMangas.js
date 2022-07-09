@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ThreeDots } from  'react-loader-spinner';
 
 export default function AllMangas() {
+    const navigate = useNavigate();
 
     const [mangas, setMangas] = useState(null);
 
@@ -24,7 +26,7 @@ export default function AllMangas() {
         }
         else {
             return (mangas.map((m, index) => 
-            <Item key={index}>
+            <Item key={index} onClick={() => navigate(`/product/${m._id}`)}>
                 <Image src={m.cover}></Image>
                 <h1>{m.title}</h1>
                 <h2>{m.price}</h2>

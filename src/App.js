@@ -4,8 +4,9 @@ import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import GenrePage from './pages/GenrePage';
-import CartPage from './pages/CartPage'
-import SearchPage from './pages/SearchPage'
+import CartPage from './pages/CartPage';
+import SearchPage from './pages/SearchPage';
+import ProductPage from './pages/ProductPage';
 
 function App() {
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/genre/:mangaGenre" element={<GenrePage />} />
 				<Route path="/cart" element={<CartPage />} />
 				<Route path="/search" element={<SearchPage />} />
+				<Route path="/product/:mangaId" element={<ProductPage />} />
 			</Routes>
 		</BrowserRouter>
 	);

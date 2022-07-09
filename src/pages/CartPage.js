@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export default function DepositPage() {
+export default function CartPage() {
 	return (
 		<Page>
 		</Page>
