@@ -9,15 +9,23 @@ export default function Menu({isMenuHidden, setIsMenuHidden}) {
                 <DivTitle>
                     <MenuTitle>Genres:</MenuTitle>
                 </DivTitle>
-                <ShouenenLink to="/genre/Shounen">Shounen</ShouenenLink>
+                <ShouenenLink to="/genre/Shounen" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                    Shounen
+                </ShouenenLink>
                 <Line></Line>
-                <IsekaiLink to="/genre/Isekai">Isekai</IsekaiLink>
+                <IsekaiLink to="/genre/Isekai" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                    Isekai
+                </IsekaiLink>
                 <Line></Line>
-                <RomanceLink to="/genre/Romance">Romance</RomanceLink>
+                <RomanceLink to="/genre/Romance" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                    Romance
+                </RomanceLink>
                 <Line></Line>
-                <SeinenLink to="/genre/Seinen">Seinen</SeinenLink>
+                <SeinenLink to="/genre/Seinen" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                    Seinen
+                </SeinenLink>
                 <Line></Line>
-                <Botton>
+                <Botton onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
                     <LoginLink to="/sign-in">Login</LoginLink>
                     <SignUpLink to="/sign-up">SingUp</SignUpLink>
                 </Botton>

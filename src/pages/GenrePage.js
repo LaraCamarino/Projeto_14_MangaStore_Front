@@ -11,6 +11,14 @@ export default function DepositPage() {
 	const {mangaGenre} = useParams();
     const [mangas, setMangas] = useState(null);
 
+	const theme = {
+		Shounen: "#5089a3",
+		Isekai: "#60a672",
+		Romance: "#eb596a",
+		Seinen: "#b06464"
+	  };
+
+	const MainTheme = theme[mangaGenre]
 
     useEffect(() => {
         const URL = `https://project-14-manga-store.herokuapp.com/genreMangas/${mangaGenre}`;
@@ -43,13 +51,27 @@ export default function DepositPage() {
 	return (
 		<Page>
 			<Navbar />
-
+			<Title theme={MainTheme}>
+                <h3>See All {mangaGenre}</h3>  
+            </Title>
 			<Container>
             {callShowMangas}
 			</Container>
 		</Page>
 	);
 }
+
+const Title = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    h3{
+        font-size: 34px;
+        color: ${props =>  props.theme}; 
+    }
+`;
 
 const Page = styled.div`
 	min-height: 100vh;
@@ -71,6 +93,8 @@ const Item = styled.div`
 	border: 1px solid #888888;
 	box-shadow: 0px 2px 2px #888888;
 	transition: .2s;
+	width: 200px;
+    flex-wrap: wrap;
 
 	:hover {
 		outline: none;

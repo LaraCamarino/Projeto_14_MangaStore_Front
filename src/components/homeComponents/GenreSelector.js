@@ -56,6 +56,7 @@ const Container = styled.div`
     }
 `;
 const Genre = styled(Link)`
+text-decoration: none;
     width: 200px;
     display: flex;
     flex-direction: column;

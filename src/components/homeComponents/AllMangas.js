@@ -11,7 +11,6 @@ export default function AllMangas() {
         const URL = "https://project-14-manga-store.herokuapp.com/allMangas";
         const promise = axios.get(URL);
         promise.then((res)=> {
-            console.log(res.data)
             setMangas(res.data);
         });
     }, [])
@@ -80,6 +79,8 @@ const Item = styled.div`
 	border: 1px solid #888888;
 	box-shadow: 0px 2px 2px #888888;
 	transition: .2s;
+    width: 200px;
+    flex-wrap: wrap;
 
 	:hover {
 		outline: none;
