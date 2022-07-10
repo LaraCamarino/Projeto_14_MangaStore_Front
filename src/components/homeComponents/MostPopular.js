@@ -7,7 +7,7 @@ export default function MostPopular() {
         <Container >
             <Banner src={"https://cdn.wallpapersafari.com/59/38/kFVOmR.jpg"}></Banner>
             <Button > 
-                <BuyNow to={'/'}> 
+                <BuyNow to={'/product/62cb27bfc262fb717a892ca8'}> 
                   <h2>TOP 1 NOW</h2>
                   <h2>BUY IT</h2>
                 </BuyNow>

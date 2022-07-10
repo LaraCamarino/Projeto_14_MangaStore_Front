@@ -40,6 +40,10 @@ export default function ProductPage() {
                         <Image src={manga.cover}></Image>
                         <Text>
                             <h1>{manga.title}</h1>
+                            <AdicionalInfo>
+                                <h1>synopsis</h1>
+                                <h2>{manga.synopsis}</h2>
+                            </AdicionalInfo>
                             <h2>${manga.price}</h2>
                             <Buttons>
                                 <button onClick={() => {
@@ -50,10 +54,6 @@ export default function ProductPage() {
                             </Buttons>
                         </Text>
                     </MainInfo>
-                    <AdicionalInfo>
-                        <h1>Informações adicionais</h1>
-                        <h2>{manga.synopsis}</h2>
-                    </AdicionalInfo>
                 </Container>
             )
         }
@@ -155,21 +155,22 @@ const Buttons = styled.div`
 `
 
 const AdicionalInfo = styled.div`
-    background-color: lightgray;
-    padding: 20px 75px;
+    max-width: 320px;
+    flex-wrap: wrap;
+    padding: 20px 0px;
     text-align: justify;
     
     h1 {
-        font-size: 16px;
+        font-size: 30px;
         font-weight: 700;
         margin-bottom: 15px;
     }
     h2 {
-        font-size: 13px;
+        font-size: 15px;
         line-height: 15px;
     }
 
     @media (max-width: 941px) {
-        padding: 20px 15px;
+        padding: 40px 0 0 0px;
     }
 `

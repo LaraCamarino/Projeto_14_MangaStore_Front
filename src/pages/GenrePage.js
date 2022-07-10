@@ -85,7 +85,7 @@ const Container = styled.div`
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-`
+`;
 
 const Item = styled.div`
 	padding: 10px;
@@ -113,11 +113,11 @@ const Item = styled.div`
 		font-size: 20px;
         text-align: end;
 	}
-`
+`;
 
 const Image = styled.img`
     width: 200px;
     height: 275px;
     border-radius: 6px;
     object-fit: cover;
-`
+`;
