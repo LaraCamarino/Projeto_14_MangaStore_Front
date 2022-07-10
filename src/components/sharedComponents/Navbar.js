@@ -1,11 +1,25 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Menu from '../sharedComponents/Menu';
+import UserContext from "../../contexts/UserContext.js";
 
-export default function Logo() {
+export default function Navbar() {
     const navigate = useNavigate();
     const [isMenuHidden, setIsMenuHidden] = useState(true);
+    const { shoppingCart, setShoppingCart } = useContext(UserContext);
+
+    console.log(shoppingCart)
+    function inCartNumber () {
+        if(shoppingCart.length === 0){
+            return (<></>)
+        }
+        else{
+            return (<Boll><p>{shoppingCart.length}</p></Boll>)
+        }
+    }
+
+    const callInCartNumber = inCartNumber();
 
 	return (
 		<Container>
@@ -20,6 +34,8 @@ export default function Logo() {
             <RightSide>
                 <ion-icon name="search-outline" onClick={()=>{navigate("/search") }}/>
                 <ion-icon name="cart-outline" onClick={()=>{navigate("/cart") }}/>
+                <Incart>{callInCartNumber}</Incart>
+                
             </RightSide>
 		</Container>
 	);
@@ -70,6 +86,7 @@ const BrandLogo = styled.h1`
 `;
 
 const RightSide = styled.div`
+    position: relative;
 	display: flex;
     align-items: center;
     width:52px;
@@ -82,4 +99,31 @@ const LeftSide = styled.div`
     align-items: center;
     width:52px;
 	height: 60px;
+`;
+
+const Incart = styled.div`
+    position: absolute;
+    bottom: 12px;
+    right:  -4px;
+    z-index: 1;
+	display: flex;
+    align-items: center;
+    width:16px;
+	height: 16px;
+`;
+
+const Boll = styled.div`
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width:16px;
+	height: 16px;
+    border-radius: 20px;
+    background-color: orange;
+    p{
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+    }
 `;
