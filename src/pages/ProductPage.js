@@ -96,7 +96,7 @@ const Image = styled.img`
     object-fit: contain;
     margin-right: 30px;
 
-    @media (max-width: 913px) {
+    @media (max-width: 941px) {
         margin: 0px 0px 20px 0px;
     }
 `
@@ -105,6 +105,7 @@ const Text = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 520px;
 
     h1 {
         font-size: 40px;
@@ -115,7 +116,7 @@ const Text = styled.div`
         color: #787878;
     }
 
-    @media (max-width: 913px) {
+    @media (max-width: 941px) {
         padding: 15px;
         h2 {
             margin: 30px 0px;
@@ -127,7 +128,7 @@ const Text = styled.div`
 const Buttons = styled.div`
     button {
         padding: 12px 15px;
-        margin-right: 15px;
+        margin-right: 25px;
         background-color: #2F2F2F;
         border-radius: 5px;
         border: 1px solid #888888;
@@ -143,9 +144,13 @@ const Buttons = styled.div`
 	    }
     }
     
-    @media (max-width: 913px) {
+    @media (max-width: 941px) {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+
+        button {
+            margin-right: 0px;
+        }
     }
 `
 
@@ -164,7 +169,7 @@ const AdicionalInfo = styled.div`
         line-height: 15px;
     }
 
-    @media (max-width: 913px) {
+    @media (max-width: 941px) {
         padding: 20px 15px;
     }
 `
