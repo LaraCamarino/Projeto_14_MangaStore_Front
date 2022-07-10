@@ -96,7 +96,7 @@ const Image = styled.img`
     object-fit: contain;
     margin-right: 30px;
 
-    @media (max-width: 941px) {
+    @media (max-width: 913px) {
         margin: 0px 0px 20px 0px;
     }
 `
@@ -116,8 +116,10 @@ const Text = styled.div`
         color: #787878;
     }
 
-    @media (max-width: 941px) {
+    @media (max-width: 913px) {
         padding: 15px;
+        max-width: 375px;
+
         h2 {
             margin: 30px 0px;
         }
@@ -144,7 +146,7 @@ const Buttons = styled.div`
 	    }
     }
     
-    @media (max-width: 941px) {
+    @media (max-width: 913px) {
         display: flex;
         justify-content: space-between;
 
@@ -169,7 +171,7 @@ const AdicionalInfo = styled.div`
         line-height: 15px;
     }
 
-    @media (max-width: 941px) {
-        padding: 20px 15px;
+    @media (max-width: 614px) {
+        padding: 20px;
     }
 `

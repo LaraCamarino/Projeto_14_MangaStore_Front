@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 
 import Navbar from "../components/sharedComponents/Navbar";
 import UserContext from "../contexts/UserContext";
+import SadCart from "../assets/empty-cart.png"
 
 export default function CartPage() {
 	const { shoppingCart, setShoppingCart } = useContext(UserContext);
@@ -10,21 +11,25 @@ export default function CartPage() {
 	function ItemCart({ cover, title, price, number }) {
 		return (
 			<Item>
-				<img src={cover} alt=" "></img>
-				<h1 >{title}</h1>
-				<h2>${price}</h2>
-				<h3 onClick={() => deleteItem(number)}>X</h3>
+				<div>
+					<img src={cover} alt=" "></img>
+					<h1 >{title}</h1>
+				</div>
+				<div>
+					<h2>${price}</h2>
+					<h3 onClick={() => deleteItem(number)}>X</h3>
+				</div>
 			</Item >
 		)
 	}
 
 	function assembleCart() {
 		return (
-			<div>
+			<Items>
 				{
 					shoppingCart.map((item, index) => <ItemCart key={index} cover={item.cover} title={item.title} price={item.price} number={index} />)
 				}
-			</div>
+			</Items>
 		)
 	}
 
@@ -38,7 +43,20 @@ export default function CartPage() {
 			totalSum = totalSum + parseFloat(manga.price);
 		});
 		return (
-			<TotalPrice>{totalSum.toFixed(2)}</TotalPrice>
+			<TotalPrice>
+				<h1>Total</h1>
+				<p>${totalSum.toFixed(2)}</p>
+			</TotalPrice>
+
+		)
+	}
+
+	function EmptyCart() {
+		return (
+			<Cart>
+				<img src={SadCart}></img>
+				<h1>Your cart is empty.</h1>
+			</Cart>
 		)
 	}
 
@@ -46,8 +64,18 @@ export default function CartPage() {
 		<Page>
 			<Navbar />
 			<Title>Your Cart</Title>
-			{assembleCart()}
-			{calculateTotalPrice()}
+			{
+				shoppingCart.length === 0 ?
+					<EmptyCart />
+					:
+					<>
+					<Container>
+						{assembleCart()}
+						{calculateTotalPrice()}
+					</Container>
+					<Button>CheckOut</Button>
+					</>
+			}
 		</Page>
 	);
 }
@@ -58,6 +86,7 @@ const Page = styled.div`
 	margin-top: 90px;
 	box-sizing: border-box;
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: center;
 `;
@@ -69,13 +98,30 @@ const Title = styled.h1`
 	margin-bottom: 20px;
 `
 
+const Container = styled.div`
+	width: 870px;
+
+	@media (max-width: 870px) {
+		width: 100vw;
+	}
+`
+
+const Items = styled.div`
+
+`
+
 const Item = styled.div`
 	margin-bottom: 10px;
-	padding: 10px 0px;
+	padding: 10px 15px;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid #787878;
 
+	div {
+		display: flex;
+		align-items: center;
+	}
 	img {
 		width: 60px;
 		height: 85px;
@@ -90,14 +136,73 @@ const Item = styled.div`
 		font-size: 17px;
 		color: #787878;
 		margin-right: 15px;
+		text-align: end;
 	}
 	h3 {
 		font-size: 15px;
 		font-weight: 700;
+		text-align: end;
 	}
 `
 
 const TotalPrice = styled.div`
-	right: 10px;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	margin-top: 15px;
+	padding-right: 30px;
 
+	h1 {
+		font-size: 20px;
+		font-weight: 700;
+		margin-right: 25px;
+	}
+	p {
+		font-size: 20px;
+		color: #03AC00;
+	}
+`
+
+const Cart = styled.div`
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	img {
+		width: 325px;
+		height: 175px;
+	}
+	h1 {
+		color: #787878;
+	}
+`
+
+const Button = styled.button`
+	width: 25%;
+    background-color: #2F2F2F;
+	padding: 16px 20px;
+	margin-top: 70px;
+	border-radius: 5px;
+	border: 1px solid #888888;
+	box-shadow: 0px 2px 2px #888888;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 700;
+	color: #FFFF;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .2s;
+
+	:active, :focus, :hover {
+		outline: none;
+		border-color: black;
+	}
+
+	@media (max-width: 768px) {
+		width: 50%;
+	}
 `
