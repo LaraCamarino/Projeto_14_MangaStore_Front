@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Menu from '../sharedComponents/Menu'
+import Menu from '../sharedComponents/Menu';
 
 export default function Logo() {
     const navigate = useNavigate();
@@ -14,7 +14,9 @@ export default function Logo() {
                 onClick={()=>{setIsMenuHidden(!isMenuHidden) }}/>
                 <Menu isMenuHidden={isMenuHidden} setIsMenuHidden={setIsMenuHidden}></Menu>
             </LeftSide>
-			    <BrandLogo onClick={()=>{navigate("/")}}>MangaStore</BrandLogo>
+			    <BrandLogo onClick={()=>{navigate("/")}}>
+                    <img src="https://pt.ffonts.net/index.php?p=refresh&id=38427&text=MangaStore" alt=" "></img>
+                </BrandLogo>
             <RightSide>
                 <ion-icon name="search-outline" onClick={()=>{navigate("/search") }}/>
                 <ion-icon name="cart-outline" onClick={()=>{navigate("/cart") }}/>
@@ -60,6 +62,11 @@ const BrandLogo = styled.h1`
 	font-size: 20px;
     font-weight: 600;
 	color: #000;
+
+    img {
+        width: 250px;
+        height: 60px;
+    }
 `;
 
 const RightSide = styled.div`

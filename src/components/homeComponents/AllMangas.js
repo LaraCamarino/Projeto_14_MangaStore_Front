@@ -90,14 +90,15 @@ const Item = styled.div`
 	}
 
 	h1 {
+        height: 75px;
 		font-size: 25px;
 		font-weight: 700;
 		margin-top: 7px;
 		margin-bottom: 15px;
 	}
 	h2 {
-		font-size: 15px;
-
+		font-size: 20px;
+        text-align: end;
 	}
 `
 

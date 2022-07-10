@@ -86,10 +86,10 @@ const Page = styled.div`
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
-`;
+`
 
 const Input = styled.input`
-	width: 75%;
+	width: 30%;
 	padding: 10px 10px 3px 24px;
 	margin-bottom: 35px;
     border: none;
@@ -105,10 +105,14 @@ const Input = styled.input`
 		outline: none;
 		border-bottom-color: black;
 	}
+
+	@media (max-width: 768px) {
+		width: 55%;
+	}
 `
 
 const Button = styled.button`
-	width: 75%;
+	width: 25%;
     background-color: #2F2F2F;
 	padding: 16px 20px;
 	border-radius: 5px;
@@ -127,6 +131,10 @@ const Button = styled.button`
 	:active, :focus, :hover {
 		outline: none;
 		border-color: black;
+	}
+
+	@media (max-width: 768px) {
+		width: 50%;
 	}
 `
 
