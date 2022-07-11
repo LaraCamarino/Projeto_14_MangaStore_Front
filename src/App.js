@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import UserContext from "./contexts/UserContext";
 
@@ -12,8 +12,13 @@ import SearchPage from './pages/SearchPage';
 import ProductPage from './pages/ProductPage';
 
 function App() {
+	
+	const cartLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+	const [shoppingCart, setShoppingCart] = useState(cartLocalStorage);
 
-	const [shoppingCart, setShoppingCart] = useState([]);
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(shoppingCart));
+	}, [shoppingCart]);
 
 	return (
 		<UserContext.Provider value={{ shoppingCart, setShoppingCart }}>
