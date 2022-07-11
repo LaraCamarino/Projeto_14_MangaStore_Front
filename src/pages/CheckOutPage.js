@@ -26,6 +26,14 @@ export default function CheckOutPage() {
     function finalizeOrder(event) {
         event.preventDefault();
 
+        if (purchaseDetails.cardNumber.length != 16) {
+            alert("Card number must contain 16 digits.");
+            return;
+        } else if (purchaseDetails.cvc.length != 3) {
+            alert("CVC number must contain 3 digits.");
+            return;
+        }
+
         const token = localStorage.getItem("token");
         const purchase = {
             purchaseDetails: purchaseDetails,
@@ -48,8 +56,8 @@ export default function CheckOutPage() {
                 text: "Your purchase was successful.",
                 icon: "success",
                 confirmButtonText: "OK",
-				confirmButtonColor: "#2F2F2F"
-              }).then(() => navigate("/"));
+                confirmButtonColor: "#2F2F2F"
+            }).then(() => navigate("/"));
         });
         promise.catch(err => {
             errorAlert();
