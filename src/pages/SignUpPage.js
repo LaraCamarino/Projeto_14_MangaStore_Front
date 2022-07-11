@@ -21,21 +21,21 @@ export default function SignUpPage() {
 		if (!loading) {
 			return (
 				<form onSubmit={signUp}>
-					<Input required type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} minLength={2} maxLength={25}></Input>
+					<Input required type="text" placeholder="Name" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} minLength={2} maxLength={25}></Input>
 					<Input required type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} ></Input>
-					<Input required type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} minLength={8}></Input>
-					<Input required type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} minLength={8}></Input>
-					<Button type="submit">Cadastrar</Button>
+					<Input required type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} minLength={8}></Input>
+					<Input required type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} minLength={8}></Input>
+					<Button type="submit">Create Account</Button>
 				</form>
 			)
 		}
 		else {
 			return (
 				<form onSubmit={signUp}>
-					<Input type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} disabled={true}></Input>
+					<Input type="text" placeholder="Name" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} disabled={true}></Input>
 					<Input type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} disabled={true}></Input>
-					<Input type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} disabled={true}></Input>
-					<Input type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} ></Input>
+					<Input type="password" placeholder="Password" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} disabled={true}></Input>
+					<Input type="password" placeholder="Confirm Password" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} ></Input>
 					<Button type="submit" disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
 				</form>
 			)
@@ -47,26 +47,26 @@ export default function SignUpPage() {
 
 		const URL = "https://project-14-manga-store.herokuapp.com/sign-up";
 
-        setLoading(true);
-        const promise = axios.post(URL, {
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            confirmPassword: user.confirmPassword
-        });
-        promise.then(res => {
-            navigate("/sign-in");
-        });
-        promise.catch(err => {
-            alert(err.response.data);
-            setUser({
-                name: "",
-                email: "",
-                password: "",
-                confirmPassword: ""
-            });
-            setLoading(false);
-        });
+		setLoading(true);
+		const promise = axios.post(URL, {
+			name: user.name,
+			email: user.email,
+			password: user.password,
+			confirmPassword: user.confirmPassword
+		});
+		promise.then(res => {
+			navigate("/sign-in");
+		});
+		promise.catch(err => {
+			alert(err.response.data);
+			setUser({
+				name: "",
+				email: "",
+				password: "",
+				confirmPassword: ""
+			});
+			setLoading(false);
+		});
 	}
 
 
@@ -76,7 +76,7 @@ export default function SignUpPage() {
 			<Title>SignUp</Title>
 			{assembleForm()}
 			<SignInLink to="/sign-in">
-				Já tem uma conta? Entre agora!
+				Already have an account? Login now!
 			</SignInLink>
 		</Page>
 	);

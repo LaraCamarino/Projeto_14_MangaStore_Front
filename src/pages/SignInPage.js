@@ -20,8 +20,8 @@ export default function SignInPage() {
 			return (
 				<form onSubmit={signIn}>
 					<Input required type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></Input>
-					<Input required type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} minLength={8}></Input>
-					<Button type="submit">Entrar</Button>
+					<Input required type="password" placeholder="Password" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} minLength={8}></Input>
+					<Button type="submit">Login</Button>
 				</form>
 			)
 		}
@@ -29,7 +29,7 @@ export default function SignInPage() {
 			return (
 				<form onSubmit={signIn}>
 					<Input required type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></Input>
-					<Input required type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} disabled={true} ></Input>
+					<Input required type="password" placeholder="Password" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} disabled={true} ></Input>
 					<Button type="submit" disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
 				</form>
 			)
@@ -41,24 +41,24 @@ export default function SignInPage() {
 
 		const URL = "https://project-14-manga-store.herokuapp.com/sign-in";
 
-        setLoading(true);
-        const promise = axios.post(URL, {
-            email: login.email,
-            password: login.password
-        });
-        promise.then(res => {
+		setLoading(true);
+		const promise = axios.post(URL, {
+			email: login.email,
+			password: login.password
+		});
+		promise.then(res => {
 			localStorage.setItem("userId", (res.data.userId));
-            localStorage.setItem("token", (res.data.token));
-            navigate("/");
-        });
-        promise.catch(err => {
-            alert(err.response.data);
-            setLogin({
-                email: "",
-                password: ""
-            });
-            setLoading(false);
-        });
+			localStorage.setItem("token", (res.data.token));
+			navigate("/");
+		});
+		promise.catch(err => {
+			alert(err.response.data);
+			setLogin({
+				email: "",
+				password: ""
+			});
+			setLoading(false);
+		});
 	}
 
 	return (
@@ -67,7 +67,7 @@ export default function SignInPage() {
 			<Title>SignIn</Title>
 			{assembleForm()}
 			<SignUpLink to="/sign-up">
-				Ainda não tem uma conta? Cadastre-se aqui!
+				Don't have an account yet? Register here!
 			</SignUpLink>
 		</Page>
 	);

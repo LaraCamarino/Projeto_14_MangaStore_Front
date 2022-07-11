@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Menu from '../sharedComponents/Menu';
 import UserContext from "../../contexts/UserContext.js";
 
 export default function Navbar() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const [isMenuHidden, setIsMenuHidden] = useState(true);
     const { shoppingCart, setShoppingCart } = useContext(UserContext);
 

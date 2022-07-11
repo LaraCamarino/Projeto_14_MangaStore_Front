@@ -15,10 +15,6 @@ export default function ProductPage() {
     const [manga, setManga] = useState(null);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
-    });
-
-    useEffect(() => {
         const URL = `https://project-14-manga-store.herokuapp.com/product/${mangaId}`;
         const promise = axios.get(URL);
         promise.then((res) => {
@@ -49,8 +45,8 @@ export default function ProductPage() {
                                 <button onClick={() => {
                                     buyProduct();
                                     navigate("/cart")
-                                    }}>Comprar agora</button>
-                                <button onClick={() => buyProduct()}>Adicionar ao carrinho</button>
+                                    }}>Buy Now</button>
+                                <button onClick={() => buyProduct()}>Add to Cart</button>
                             </Buttons>
                         </Text>
                     </MainInfo>
@@ -129,6 +125,7 @@ const Text = styled.div`
 
 const Buttons = styled.div`
     button {
+        width: 40%;
         padding: 12px 15px;
         margin-right: 25px;
         background-color: #2F2F2F;
@@ -157,7 +154,7 @@ const Buttons = styled.div`
 `
 
 const AdicionalInfo = styled.div`
-    max-width: 320px;
+    max-width: 375px;
     flex-wrap: wrap;
     padding: 20px 0px;
     text-align: justify;
