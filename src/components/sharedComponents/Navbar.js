@@ -9,7 +9,6 @@ export default function Navbar() {
     const [isMenuHidden, setIsMenuHidden] = useState(true);
     const { shoppingCart, setShoppingCart } = useContext(UserContext);
 
-    console.log(shoppingCart)
     function inCartNumber () {
         if(shoppingCart.length === 0){
             return (<></>)

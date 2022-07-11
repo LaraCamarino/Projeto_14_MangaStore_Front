@@ -45,7 +45,7 @@ export default function SignInPage() {
             password: login.password
         });
         promise.then(res => {
-			localStorage.setItem("name", (res.data.name));
+			localStorage.setItem("userId", (res.data.userId));
             localStorage.setItem("token", (res.data.token));
             navigate("/");
         });

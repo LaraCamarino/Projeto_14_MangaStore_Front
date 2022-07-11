@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useState, useContext } from "react";
+import axios from "axios";
 
 import Navbar from "../components/sharedComponents/Navbar";
 import UserContext from "../contexts/UserContext";
@@ -54,10 +55,32 @@ export default function CartPage() {
 	function EmptyCart() {
 		return (
 			<Cart>
-				<img src={SadCart}></img>
+				<img src={SadCart} alt=" "></img>
 				<h1>Your cart is empty.</h1>
 			</Cart>
 		)
+	}
+
+	function checkOut() {
+		const token = localStorage.getItem("token");
+		//const id = localStorage.getItem("userId");
+				
+		const URL = "https://project-14-manga-store.herokuapp.com/purchase";
+		const config = {
+			headers: {
+				"Authorization": `Bearer ${token}`
+			}
+		};
+		const promise = axios.post(URL, shoppingCart, config); 
+		promise.then(res => {
+			console.log("aprovada.")
+            //navigate("/");
+        });
+		promise.catch(err => {
+            console.log("nao foi.");
+        });
+
+
 	}
 
 	return (
@@ -69,11 +92,11 @@ export default function CartPage() {
 					<EmptyCart />
 					:
 					<>
-					<Container>
-						{assembleCart()}
-						{calculateTotalPrice()}
-					</Container>
-					<Button>CheckOut</Button>
+						<Container>
+							{assembleCart()}
+							{calculateTotalPrice()}
+						</Container>
+						<Button onClick={() => checkOut()}>CheckOut</Button>
 					</>
 			}
 		</Page>

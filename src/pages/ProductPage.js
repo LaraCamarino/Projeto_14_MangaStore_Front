@@ -41,7 +41,7 @@ export default function ProductPage() {
                         <Text>
                             <h1>{manga.title}</h1>
                             <AdicionalInfo>
-                                <h1>synopsis</h1>
+                                <h1>Synopsis</h1>
                                 <h2>{manga.synopsis}</h2>
                             </AdicionalInfo>
                             <h2>${manga.price}</h2>
@@ -60,7 +60,7 @@ export default function ProductPage() {
     }
 
     function buyProduct() {
-        setShoppingCart([... shoppingCart, manga]);
+        setShoppingCart([...shoppingCart, manga]);
     }
 
     return (
@@ -170,9 +170,5 @@ const AdicionalInfo = styled.div`
     h2 {
         font-size: 15px;
         line-height: 15px;
-    }
-
-    @media (max-width: 614px) {
-        padding: 20px;
     }
 `
