@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { ThreeDots } from 'react-loader-spinner';
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import Navbar from '../components/sharedComponents/Navbar'
 
@@ -17,50 +18,56 @@ export default function SignInPage() {
 	function getSearch() {
 		const URL = `https://project-14-manga-store.herokuapp.com/search/${search}`;
 
-        setLoading(true);
-        const promise = axios.get(URL);
-        promise.then(res => {
+		setLoading(true);
+		const promise = axios.get(URL);
+		promise.then(res => {
 			setMangas(res.data);
 			setLoading(false);
-        });
-        promise.catch(err => {
-            alert(err.response.data);
-            setLoading(false);
-        });
+		});
+		promise.catch(err => {
+			Swal.fire({
+				title: "Error!",
+				text: err.response.data,
+				icon: "error",
+				confirmButtonText: "OK",
+				confirmButtonColor: "#2F2F2F"
+			});
+			setLoading(false);
+		});
 	}
 
 	function showMangas() {
-        if (loading) {
-            return <ThreeDots width={51} height={13} color="#D1D1D4" />
-        } 
-		else if(mangas === ""){
+		if (loading) {
+			return <ThreeDots width={51} height={13} color="#D1D1D4" />
+		}
+		else if (mangas === "") {
 			return <h2>Start Your Search</h2>
 		}
-        else if (!mangas) {
-            return <h2>No Manga Found</h2>
-        }
-        else {
-            return (mangas.map((m, index) => 
-            <Item key={index} onClick={() => navigate(`/product/${m._id}`)}>
-                <Image src={m.cover}></Image>
-                <h1>{m.title}</h1>
-                <h2>${m.price}</h2>
-            </Item>))
-        }
-    }
+		else if (!mangas) {
+			return <h2>No Manga Found</h2>
+		}
+		else {
+			return (mangas.map((m, index) =>
+				<Item key={index} onClick={() => navigate(`/product/${m._id}`)}>
+					<Image src={m.cover}></Image>
+					<h1>{m.title}</h1>
+					<h2>${m.price}</h2>
+				</Item>))
+		}
+	}
 
 	const callShowMangas = showMangas()
 
 	return (
 		<Page>
-			<Navbar/>
+			<Navbar />
 			<Title>
-				<ion-icon name="search-outline" onClick={getSearch}/>
-				<Input type="text" placeholder="Find your manga" 
-				value={search} onChange={(e) => setSearch( e.target.value )} ></Input>
-            </Title>
+				<ion-icon name="search-outline" onClick={getSearch} />
+				<Input type="text" placeholder="Find your manga"
+					value={search} onChange={(e) => setSearch(e.target.value)} ></Input>
+			</Title>
 			<Container>
-			{callShowMangas}
+				{callShowMangas}
 			</Container>
 		</Page>
 	);

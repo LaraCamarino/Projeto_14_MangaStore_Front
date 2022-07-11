@@ -6,6 +6,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 import Navbar from "../components/sharedComponents/Navbar";
 import UserContext from "../contexts/UserContext";
+import { successAlert } from "../components/sharedComponents/Alerts";
 
 export default function ProductPage() {
     const navigate = useNavigate();
@@ -44,9 +45,12 @@ export default function ProductPage() {
                             <Buttons>
                                 <button onClick={() => {
                                     buyProduct();
-                                    navigate("/cart")
+                                    navigate("/cart");
                                     }}>Buy Now</button>
-                                <button onClick={() => buyProduct()}>Add to Cart</button>
+                                <button onClick={() => {
+                                    buyProduct();
+                                    successAlert();
+                                    }}>Add to Cart</button>
                             </Buttons>
                         </Text>
                     </MainInfo>

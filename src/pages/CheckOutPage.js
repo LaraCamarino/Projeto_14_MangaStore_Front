@@ -2,10 +2,12 @@ import styled from 'styled-components';
 import { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 import Navbar from "../components/sharedComponents/Navbar";
 import UserContext from "../contexts/UserContext";
 import { ThreeDots } from 'react-loader-spinner';
+import { errorAlert } from "../components/sharedComponents/Alerts";
 
 export default function CheckOutPage() {
     const navigate = useNavigate();
@@ -29,7 +31,7 @@ export default function CheckOutPage() {
             purchaseDetails: purchaseDetails,
             productsDetails: shoppingCart
         };
-        
+
         setLoading(true);
         const URL = "https://project-14-manga-store.herokuapp.com/purchase";
         const config = {
@@ -41,13 +43,19 @@ export default function CheckOutPage() {
         promise.then(res => {
             localStorage.removeItem("cart");
             setShoppingCart([]);
-            navigate("/");
+            Swal.fire({
+                title: "Thank You!",
+                text: "Your purchase was successful.",
+                icon: "success",
+                confirmButtonText: "OK",
+				confirmButtonColor: "#2F2F2F"
+              }).then(() => navigate("/"));
         });
         promise.catch(err => {
-            alert("Something went wrong.");
+            errorAlert();
             console.log(err.response.data);
             setLoading(false);
-        });        
+        });
     }
 
     function assembleForm() {

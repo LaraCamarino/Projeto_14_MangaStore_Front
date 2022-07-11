@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import Navbar from "../components/sharedComponents/Navbar";
 import { ThreeDots } from 'react-loader-spinner';
+import Swal from "sweetalert2";
 
 export default function SignInPage() {
 	const navigate = useNavigate();
@@ -52,7 +53,13 @@ export default function SignInPage() {
 			navigate("/");
 		});
 		promise.catch(err => {
-			alert(err.response.data);
+			Swal.fire({
+				title: "Error!",
+				text: err.response.data,
+				icon: "error",
+				confirmButtonText: "OK",
+				confirmButtonColor: "#2F2F2F"
+			  })
 			setLogin({
 				email: "",
 				password: ""

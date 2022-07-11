@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import Navbar from "../components/sharedComponents/Navbar";
 import { ThreeDots } from 'react-loader-spinner';
+import Swal from "sweetalert2";
 
 export default function SignUpPage() {
 	const navigate = useNavigate();
@@ -55,10 +56,22 @@ export default function SignUpPage() {
 			confirmPassword: user.confirmPassword
 		});
 		promise.then(res => {
-			navigate("/sign-in");
+			Swal.fire({
+				title: "Success!",
+				text: "Account created successfully.",
+				icon: "success",
+				confirmButtonText: "OK",
+				confirmButtonColor: "#2F2F2F"
+			  }).then(() => navigate("/sign-in"));			
 		});
 		promise.catch(err => {
-			alert(err.response.data);
+			Swal.fire({
+				title: "Error!",
+				text: err.response.data,
+				icon: "error",
+				confirmButtonText: "OK",
+				confirmButtonColor: "#2F2F2F"
+			  });
 			setUser({
 				name: "",
 				email: "",
