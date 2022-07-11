@@ -19,7 +19,7 @@ export default function AllMangas() {
 
     function showMangas() {
         if (mangas === null) {
-            return <ThreeDots width={51} height={13} color="#FFFFFF" />
+            return <ThreeDots width={51} height={13} color="#D1D1D4" />
         } 
         else if (mangas === "") {
             return <></>
@@ -64,7 +64,6 @@ const Title = styled.div`
 const Page = styled.div`
 	min-height: 100vh;
 	width: 100%;
-	margin-top: 50px;
 `;
 
 const Container = styled.div`

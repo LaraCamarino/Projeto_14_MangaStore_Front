@@ -28,7 +28,7 @@ export default function ProductPage() {
 
     function showManga() {
         if (manga === null) {
-            return <ThreeDots width={51} height={13} color="#FFFFFF" />
+            return <ThreeDots width={51} height={13} color="#D1D1D4" />
         }
         else if (manga === "") {
             return <></>

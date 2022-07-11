@@ -18,25 +18,27 @@ export default function SignInPage() {
 	function assembleForm() {
 		if (!loading) {
 			return (
-				<>
-					<Input type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></Input>
-					<Input type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })}></Input>
-					<Button onClick={signIn}>Entrar</Button>
-				</>
+				<form onSubmit={signIn}>
+					<Input required type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></Input>
+					<Input required type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} minLength={8}></Input>
+					<Button type="submit">Entrar</Button>
+				</form>
 			)
 		}
 		else {
 			return (
-				<>
-					<Input type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></Input>
-					<Input type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} disabled={true} ></Input>
-					<Button onClick={signIn} disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
-				</>
+				<form onSubmit={signIn}>
+					<Input required type="email" placeholder="E-mail" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></Input>
+					<Input required type="password" placeholder="Senha" value={login.password} onChange={(e) => setLogin({ ...login, password: e.target.value })} disabled={true} ></Input>
+					<Button type="submit" disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
+				</form>
 			)
 		}
 	}
 
-	function signIn() {
+	function signIn(event) {
+		event.preventDefault();
+
 		const URL = "https://project-14-manga-store.herokuapp.com/sign-in";
 
         setLoading(true);
@@ -62,6 +64,7 @@ export default function SignInPage() {
 	return (
 		<Page>
 			<Navbar />
+			<Title>SignIn</Title>
 			{assembleForm()}
 			<SignUpLink to="/sign-up">
 				Ainda não tem uma conta? Cadastre-se aqui!
@@ -73,10 +76,25 @@ export default function SignInPage() {
 const Page = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
+	margin-top: 90px;
+
+	form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+`
+
+const Title = styled.h1`
+	font-size: 34px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 150px;
 `
 
 const Input = styled.input`
@@ -96,6 +114,9 @@ const Input = styled.input`
 		outline: none;
 		border-bottom-color: black;
 	}
+	:valid {
+        border-color: #03AC00;
+    }
 
 	@media (max-width: 768px) {
 		width: 55%;

@@ -31,7 +31,7 @@ export default function SignInPage() {
 
 	function showMangas() {
         if (loading) {
-            return <ThreeDots width={51} height={13} color="#FFFFFF" />
+            return <ThreeDots width={51} height={13} color="#D1D1D4" />
         } 
 		else if(mangas === ""){
 			return <h2>Start Your Search</h2>
@@ -85,6 +85,7 @@ const Title = styled.div`
 	ion-icon{
 		font-size: 34px;
 		border-radius: 5px;
+		color: #A4A4A4;
 	}
 	ion-icon:hover {
         background-color: #ddd;
@@ -99,6 +100,7 @@ const Container = styled.div`
 	justify-content: center;
 	align-items: center;
 `;
+
 const Input = styled.input`
 	width: 30%;
 	padding: 40px 10px 3px 24px;

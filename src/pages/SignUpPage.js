@@ -20,29 +20,31 @@ export default function SignUpPage() {
 	function assembleForm() {
 		if (!loading) {
 			return (
-				<form>
-					<Input type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} ></Input>
-					<Input type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} ></Input>
-					<Input type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} ></Input>
-					<Input type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} ></Input>
-					<Button onClick={signUp}>Cadastrar</Button>
+				<form onSubmit={signUp}>
+					<Input required type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} minLength={2} maxLength={25}></Input>
+					<Input required type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} ></Input>
+					<Input required type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} minLength={8}></Input>
+					<Input required type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} minLength={8}></Input>
+					<Button type="submit">Cadastrar</Button>
 				</form>
 			)
 		}
 		else {
 			return (
-				<>
+				<form onSubmit={signUp}>
 					<Input type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} disabled={true}></Input>
 					<Input type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} disabled={true}></Input>
 					<Input type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} disabled={true}></Input>
 					<Input type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} ></Input>
-					<Button onClick={signUp} disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
-				</>
+					<Button type="submit" disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Button>
+				</form>
 			)
 		}
 	}
 
-	function signUp() {
+	function signUp(event) {
+		event.preventDefault();
+
 		const URL = "https://project-14-manga-store.herokuapp.com/sign-up";
 
         setLoading(true);
@@ -71,6 +73,7 @@ export default function SignUpPage() {
 	return (
 		<Page>
 			<Navbar />
+			<Title>SignUp</Title>
 			{assembleForm()}
 			<SignInLink to="/sign-in">
 				Já tem uma conta? Entre agora!
@@ -82,18 +85,25 @@ export default function SignUpPage() {
 const Page = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
+	margin-top: 90px;
 
 	form {
 		width: 100%;
 		display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
+`
+
+const Title = styled.h1`
+	font-size: 34px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 100px;
 `
 
 const Input = styled.input`
@@ -113,6 +123,9 @@ const Input = styled.input`
 		outline: none;
 		border-bottom-color: black;
 	}
+	:valid {
+        border-color: #03AC00;
+    }
 
 	@media (max-width: 768px) {
 		width: 55%;

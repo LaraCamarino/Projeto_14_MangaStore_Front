@@ -31,7 +31,7 @@ export default function GenrePage() {
 
     function showMangas() {
         if (mangas === null) {
-            return <ThreeDots width={51} height={13} color="#FFFFFF" />
+            return <ThreeDots width={51} height={13} color="#D1D1D4" />
         } 
         else if (mangas === "") {
             return <></>
