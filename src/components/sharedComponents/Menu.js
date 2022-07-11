@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Menu({isMenuHidden, setIsMenuHidden}) {
+
+    function ScrollAndClose(){
+
+        window.scrollTo(0, 0);
+        setIsMenuHidden(!isMenuHidden)
+    }
 
 	return (
         <>
@@ -9,19 +16,19 @@ export default function Menu({isMenuHidden, setIsMenuHidden}) {
                 <DivTitle>
                     <MenuTitle>Genres:</MenuTitle>
                 </DivTitle>
-                <ShouenenLink to="/genre/Shounen" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                <ShouenenLink to="/genre/Shounen" onClick={()=>{ScrollAndClose()}}>
                     Shounen
                 </ShouenenLink>
                 <Line></Line>
-                <IsekaiLink to="/genre/Isekai" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                <IsekaiLink to="/genre/Isekai" onClick={()=>{ScrollAndClose() }}>
                     Isekai
                 </IsekaiLink>
                 <Line></Line>
-                <RomanceLink to="/genre/Romance" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                <RomanceLink to="/genre/Romance" onClick={()=>{ScrollAndClose() }}>
                     Romance
                 </RomanceLink>
                 <Line></Line>
-                <SeinenLink to="/genre/Seinen" onClick={()=>{setIsMenuHidden(!isMenuHidden) }}>
+                <SeinenLink to="/genre/Seinen" onClick={()=>{ScrollAndClose() }}>
                     Seinen
                 </SeinenLink>
                 <Line></Line>
