@@ -27,7 +27,7 @@ export default function GenrePage() {
         promise.then((res)=> {
             setMangas(res.data);
         });
-    }, [])
+    }, [mangaGenre])
 
     function showMangas() {
         if (mangas === null) {

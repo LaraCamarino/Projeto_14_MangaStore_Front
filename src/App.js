@@ -10,6 +10,7 @@ import GenrePage from './pages/GenrePage';
 import CartPage from './pages/CartPage';
 import SearchPage from './pages/SearchPage';
 import ProductPage from './pages/ProductPage';
+import CheckOutPage from "./pages/CheckOutPage";
 
 function App() {
 	
@@ -31,6 +32,7 @@ function App() {
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/search" element={<SearchPage />} />
 					<Route path="/product/:mangaId" element={<ProductPage />} />
+					<Route path="/checkout" element={<CheckOutPage />} />
 				</Routes>
 			</BrowserRouter>
 		</UserContext.Provider>

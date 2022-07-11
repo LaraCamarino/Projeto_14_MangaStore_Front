@@ -68,7 +68,7 @@ text-decoration: none;
 const Banner = styled.img`
     width: 156px;
     height: 175px;
-    border-radius: 6px;
+    border-radius: 15px;
     object-fit: cover;
 `;
 

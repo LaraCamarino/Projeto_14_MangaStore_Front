@@ -51,7 +51,7 @@ const BuyNow = styled(Link)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 5px;
     text-decoration: none;
     h2{
         

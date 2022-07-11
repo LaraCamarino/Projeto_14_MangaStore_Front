@@ -20,13 +20,13 @@ export default function SignUpPage() {
 	function assembleForm() {
 		if (!loading) {
 			return (
-				<>
+				<form>
 					<Input type="text" placeholder="Nome" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} ></Input>
 					<Input type="email" placeholder="E-mail" value={user.email} onChange={(e) => setUser({ ...user, email: e.target.value })} ></Input>
 					<Input type="password" placeholder="Senha" value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} ></Input>
 					<Input type="password" placeholder="Confirme a senha" value={user.confirmPassword} onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} ></Input>
 					<Button onClick={signUp}>Cadastrar</Button>
-				</>
+				</form>
 			)
 		}
 		else {
@@ -86,6 +86,14 @@ const Page = styled.div`
 	align-items: center;
 	min-height: 100vh;
 	width: 100%;
+
+	form {
+		width: 100%;
+		display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	}
 `
 
 const Input = styled.input`

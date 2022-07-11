@@ -1,12 +1,14 @@
 import styled from 'styled-components';
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import Navbar from "../components/sharedComponents/Navbar";
 import UserContext from "../contexts/UserContext";
 import SadCart from "../assets/empty-cart.png"
 
 export default function CartPage() {
+	const navigate = useNavigate();
+
 	const { shoppingCart, setShoppingCart } = useContext(UserContext);
 
 	function ItemCart({ cover, title, price, number }) {
@@ -61,28 +63,6 @@ export default function CartPage() {
 		)
 	}
 
-	function checkOut() {
-		const token = localStorage.getItem("token");
-		//const id = localStorage.getItem("userId");
-				
-		const URL = "https://project-14-manga-store.herokuapp.com/purchase";
-		const config = {
-			headers: {
-				"Authorization": `Bearer ${token}`
-			}
-		};
-		const promise = axios.post(URL, shoppingCart, config); 
-		promise.then(res => {
-			console.log("aprovada.")
-            //navigate("/");
-        });
-		promise.catch(err => {
-            console.log("nao foi.");
-        });
-
-
-	}
-
 	return (
 		<Page>
 			<Navbar />
@@ -96,7 +76,7 @@ export default function CartPage() {
 							{assembleCart()}
 							{calculateTotalPrice()}
 						</Container>
-						<Button onClick={() => checkOut()}>CheckOut</Button>
+						<Button onClick={() => navigate("/checkout")}>CheckOut</Button>
 					</>
 			}
 		</Page>
